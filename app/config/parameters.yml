@@ -1,0 +1,14 @@
+# Configured for demo setup at FUxCon 2013
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: fuxcon2013_symfony
+    database_user: fuxcon
+    database_password: fuxcon
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    locale: en
+    secret: 2d28891f9dae8a20c2eccb01c54be7c087f616e3
