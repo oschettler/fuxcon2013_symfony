@@ -1,4 +1,4 @@
-# Configured for demo setup at FUxCon 2013
+# This file is auto-generated during the composer install
 parameters:
     database_driver: pdo_mysql
     database_host: 127.0.0.1

@@ -27,7 +27,7 @@ curl -s http://getcomposer.org/installer | php
 php composer.phar install
 
 echo "Loading database ..."
-mysql -ufuxcon -pfuxcon fuxcon2013_cakephp < fuxcon2013_symfony.sql
+mysql -ufuxcon -pfuxcon fuxcon2013_symfony < fuxcon2013_symfony.sql
 
 echo "Setting permissions (requires root access) ..."
 sys=`uname -s`
@@ -36,10 +36,10 @@ then
   rm -rf app/cache/*
   rm -rf app/logs/*
 
-  sudo chmod +a "www allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs
+  sudo chmod +a "www allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs web/images/project
   sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs
 else
-  sudo setfacl -R -m u:www-data:rwX -m u:`whoami`:rwX app/cache app/logs
-  sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
+  sudo setfacl -R -m u:www-data:rwX -m u:`whoami`:rwX app/cache app/logs web/images/project
+  sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs web/images/project
 fi
 echo "Done."
