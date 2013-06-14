@@ -1,18 +1,19 @@
-FUxCon 2013 // CakePHP
+FUxCon 2013 // Symfony
 ======================
 
 Implementation of a project site as demonstrated at the FUxCon 2013 workshop.
-This particular implementation is based on CakePHP 2.3.6 which is included in this repository as submodule.
+This particular implementation is based on Symfony 2.3.1 which is included in this repository
+as recommended on [Managing Symfony in Git](http://symfony.com/doc/current/cookbook/workflow/new_project_git.html).
 
 As a quick start, 
 
-1. Set up a MySQL database "fuxcon2013_cakephp" and create a database user "fuxcon" with password "fuxcon" for it.
+1. Set up a MySQL database "fuxcon2013_symfony" and create a database user "fuxcon" with password "fuxcon" for it.
 
 2. Run the script install.sh in this directory. 
 
 3. Set up a web server with PHP 5.3 and point its document root at 
 
-  <this directory>/app/webroot
+  <this directory>/web
 
 4. Access the website through your browser 
 
@@ -23,7 +24,7 @@ Olav Schettler // Cocomore AG
 
 
 ---
-fuxcon2013_cakephp Copyright (C) 2013 Cocomore AG
+fuxcon2013_symfony Copyright (C) 2013 Cocomore AG
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
