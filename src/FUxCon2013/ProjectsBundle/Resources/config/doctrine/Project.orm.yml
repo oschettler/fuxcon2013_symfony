@@ -1,0 +1,35 @@
+FUxCon2013\ProjectsBundle\Entity\Project:
+    type: entity
+    table: project
+    repositoryClass: ProjectRepository
+    id:
+            id:
+                type: integer
+                generator:
+                    strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        startDate:
+            type: date
+            nullable: false
+            column: start_date
+        endDate:
+            type: date
+            nullable: false
+            column: end_date
+        about:
+            type: text
+            nullable: false
+        created:
+            type: datetime
+            nullable: false
+        modified:
+            type: datetime
+            nullable: false
+    manyToOne:
+        user:
+            targetEntity: User

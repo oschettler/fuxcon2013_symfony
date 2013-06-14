@@ -18,8 +18,13 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
         );
 
+        $bundles[] = new FPN\TagBundle\FPNTagBundle();
+        $bundles[] = new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle();
+        $bundles[] = new FOS\UserBundle\FOSUserBundle();
+
+        $bundles[] = new FUxCon2013\ProjectsBundle\FUxCon2013ProjectsBundle();
+
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
-            $bundles[] = new Acme\DemoBundle\AcmeDemoBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();

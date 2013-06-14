@@ -1,0 +1,12 @@
+FUxCon2013\ProjectsBundle\Entity\Tagging:
+    type: entity
+    table: tagging
+    id:
+            id:
+                type: integer
+                generator:
+                    strategy: AUTO
+    manyToOne:
+        tag:
+            targetEntity: Tag
+

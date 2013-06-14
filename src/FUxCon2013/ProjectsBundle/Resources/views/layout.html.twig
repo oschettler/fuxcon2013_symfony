@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Projects{% endblock %}</title>
+	<link rel="shortcut icon" href="{{ asset('bundles/fuxcon2013/img/favicon.ico') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="{{ asset('bundles/fuxcon2013/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('bundles/fuxcon2013/css/sites.css') }}" rel="stylesheet">
+    <!--link href="{{ asset('bundles/fuxcon2013/bootstrap/css/bootstrap-responsive.min.css') }}" rel="stylesheet"-->
+  </head>
+
+  <body {% if body_class is defined %}class="{{ body_class }}"{% endif %}>
+
+    <div class="container-narrow">
+
+	  {% block content_header %}
+	      <div class="masthead">
+	        <ul class="nav nav-pills pull-right">
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        {{app.user.username}}<b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ path('project_new') }}">Create project</a></li>
+                        <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
+                    </ul>
+                </li>
+            {% else %}
+                <li><a href="{{ path('fos_user_security_login') }}">login</a></li>
+            {% endif %}
+	        </ul>
+	        <h3 class="muted"><a href="/">Projects</a></h3>
+	      </div>
+      {% endblock %}
+
+      {% for type, flashMessages in app.session.flashbag.all() %}
+          {% for flashMessage in flashMessages %}
+            <div class="alert alert-{{ type }}">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ flashMessage }}
+            </div>
+          {% endfor %}
+      {% endfor %}
+
+      {% block content %}
+      {% endblock %}
+
+      <div class="footer">
+        <p>
+          in Symfony for <a href="'http://www.lugfrankfurt.de/FUxCon?action=AttachFile&do=get&target=cfp.pdf'">FUxCon 2013</a> by Olav Schettler
+    			</p>
+      </div>
+
+    </div> <!-- /container -->
+
+    <script src="{{ asset('bundles/fuxcon2013/js/jquery-1.9.1.min.js') }}"></script>
+    <script src="{{ asset('bundles/fuxcon2013/bootstrap/js/bootstrap.min.js') }}"></script>
+
+  </body>
+</html>

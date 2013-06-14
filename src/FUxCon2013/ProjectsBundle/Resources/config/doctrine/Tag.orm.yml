@@ -1,0 +1,13 @@
+FUxCon2013\ProjectsBundle\Entity\Tag:
+    type: entity
+    table: tag
+    id:
+            id:
+                type: integer
+                generator:
+                    strategy: AUTO
+    oneToMany:
+        tagging:
+            targetEntity: Tagging
+            mappedBy: tag
+            fetch: EAGER

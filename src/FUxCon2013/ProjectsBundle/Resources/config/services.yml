@@ -1,0 +1,7 @@
+# @todo Strangely not read. Put into app/config/config.yml
+services:
+    fuxcon2013.twig.schettler_extension:
+        class: FUxCon2013\ProjectsBundle\Twig\Extension\FUxCon2013Extension
+        tags:
+            - { name: twig.extension }
+        arguments: [ @service_container ]

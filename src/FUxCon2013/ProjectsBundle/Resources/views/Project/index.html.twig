@@ -1,0 +1,41 @@
+{% extends 'FUxCon2013ProjectsBundle::layout.html.twig' %}
+
+{% block title %}Projects{% endblock %}
+
+{% block content %}
+
+    {% block fos_user_content %}{% endblock %}
+
+    {% if page == 1 %}
+    	<div class="jumbotron">
+    		<h1>Symfony 2</h1>
+    		<p class="lead">4 Frameworks - FUxCon 2013</strong></p>
+    	</div>
+
+    {% endif %}
+
+	<div class="row-fluid projects">
+    {% for column in columns %}
+	  	<div class="span{{ width }}">
+		{% for project in column %}
+            <div class="project">
+                <h4>
+                    <a href="{{ path('project_show', { 'id': project.id } ) }}">
+                        {{ project.title }}
+                    </a>
+                </h4>
+                <a class="thumbnail" href="{{ path('project_show', { 'id': project.id } ) }}">
+                    <img src="{{ thumbnail([ '/images/project/', project.id, '.jpg' ] | join, '200x200') }}">
+                </a>
+                <p>{{ project.about | truncate }}</p>
+            </div>
+		{% endfor %}
+		</div>
+    {% endfor %}
+	</div>
+
+    {% include 'FUxCon2013ProjectsBundle::_paginate.html.twig' with { 'default_page': 'project_list' } %}
+    
+	<hr>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% if (totalPages > 0) %}
+    <div class="pagination text-center">
+    <ul>
+        {% set prev = (page - 1) %}
+        {% set next = (page + 1) %}
+ 
+        {% if page == 1 %}
+            <li class="disabled"><a href="#">«</a></li>
+        {% else %}
+            <li><a href="{{ path(default_page, { 'offset': prev }) }}">«</a></li>
+        {% endif %}
+ 
+        {% for i in range(1, totalPages) %}
+            {% if page == i %}
+                <li class="active"><a href="#">{{ i }}</a></li>
+            {% else %}
+                <li><a href="{{ path(default_page, { 'offset': i }) }}">{{ i }}</a></li>
+            {% endif %}
+
+            {% if i % 17 == 0 and i > 102 or i < 102 and i % 20 == 0 %}
+
+                {% if page >= totalPages %}
+                    <li class="disabled"><a href="#">»</a></li>
+                {% else %}
+                    <li><a href="{{ path(default_page, { 'offset': next }) }}">»</a></li>
+                {% endif %}
+
+                {% if page <= 1 %}
+                    <li class="disabled"><a href="#">«</a></li>
+                {% else %}
+                    <li><a href="{{ path(default_page, { 'offset': prev }) }}">«</a></li>
+                {% endif %}
+
+            {% endif %}
+        {% endfor %}
+
+        {% if page >= totalPages %}
+            <li class="disabled"><a href="#">»</a></li>
+        {% else %}
+            <li><a href="{{ path(default_page, { 'offset': next }) }}">»</a></li>
+        {% endif %}
+
+    </ul>
+    </div>
+{% endif %}

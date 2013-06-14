@@ -1,0 +1,43 @@
+{% extends 'FUxCon2013ProjectsBundle::layout.html.twig' %}
+
+{% block title %}Project {{ project.title }}{% endblock %}
+
+{% block content %}
+
+    {% block fos_user_content %}{% endblock %}
+
+
+<div class="row">
+    <div class="span5">
+        <p class="thumbnail picture-content">
+            <img src="{{ thumbnail([ '/images/project/', project.id, '.jpg' ] | join, '380x380') }}">
+        </p>
+        {% if project.dates %}
+            <p class="dates-content">
+                <strong>Times:</strong>
+                {{ project.dates }}
+            </p>
+        {% endif %}
+        {% if project.tags %}
+            <p class="tags-content">
+                <strong>Topics:</strong>
+                {% for tag in project.tags %}
+                    <span class="label">{{ tag.name }}</span>
+                {% endfor %}
+            </p>
+        {% endif %}
+        <p class="actions">
+           {% if is_granted("MAY_EDIT", project) %}
+             <a class="btn" id="edit-project" href="{{ path('project_edit', { 'id': project.id }) }}">edit this project</a>
+           {% endif %}
+         </p>
+    </div>
+    <div class="span4">
+        <h1>{{ project.title }}</h1>
+        <p>{{ project.about | markdown}}</p>
+    </div>
+</div>
+
+<hr>
+
+{% endblock %}

@@ -63,3 +63,43 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
     spool:     { type: memory }
+
+services:
+    fuxcon2013.twig.fuxcon2013_extension:
+        class: FUxCon2013\ProjectsBundle\Twig\Extension\FUxCon2013Extension
+        tags:
+            - { name: twig.extension }
+        arguments: [ @service_container ]
+
+    fuxcon2013.form.tags_entry:
+        class: FUxCon2013\ProjectsBundle\Form\TagsType
+        arguments: [ "@fpn_tag.tag_manager" ]
+        tags:
+            - { name: form.type, alias: tags_entry }
+
+    fuxcon2013.form.date_entry:
+        class: FUxCon2013\ProjectsBundle\Form\DateType
+        tags:
+            - { name: form.type, alias: date_entry }
+
+    fuxcon2013.security.owner_voter:
+        class:      FUxCon2013\ProjectsBundle\Security\OwnerVoter
+        public:     false
+        arguments: [ @service_container ]
+        tags:
+            - { name: security.voter }
+
+fpn_tag:
+    model:
+        tag_class:     FUxCon2013\ProjectsBundle\Entity\Tag
+        tagging_class: FUxCon2013\ProjectsBundle\Entity\Tagging
+
+knp_markdown:
+    parser:
+        service: markdown.parser.sundown
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: FUxCon2013\ProjectsBundle\Entity\User
+
