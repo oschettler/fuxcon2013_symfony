@@ -1,0 +1,30 @@
+{% extends "FUxCon2013ProjectsBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block content %}
+<div class="users form">
+{% if error %}
+    <div>{{ error|trans }}</div>
+{% endif %}
+
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    <fieldset>
+        <legend><?php echo __('Please enter your username and password'); ?></legend>
+        <label for="username-field">Username</label>
+        <input type="text" id="username-field" name="_username" value="{{ last_username }}" required="required">
+
+        <label for="password-field">Password</label>
+        <input type="password" id="password-field" name="_password" required="required">
+
+        <label for="remember_me">
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on">
+            Remember me
+        </label>
+        <button type="submit" class="btn" id="login-button" name="_submit">Login</button>
+</form>
+
+<p>&hellip; or <a href="{{ path('fos_user_registration_register') }}">register</a> a new account.</p>
+</div>
+{% endblock content %}
