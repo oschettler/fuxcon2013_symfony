@@ -27,11 +27,11 @@ curl -s http://getcomposer.org/installer | php
 php composer.phar install
 
 echo "Loading database ..."
-mysql -ufuxcon -pfuxcon fuxcon2013_symfony < fuxcon2013_symfony.sql
+mysql -h127.0.0.1 -ufuxcon -pfuxcon fuxcon2013_symfony < fuxcon2013_symfony.sql
 
 echo "Setting permissions (requires root access) ..."
 sys=`uname -s`
-if [ $sys = Darvin ]
+if [ $sys = Darwin ]
 then
   rm -rf app/cache/*
   rm -rf app/logs/*
