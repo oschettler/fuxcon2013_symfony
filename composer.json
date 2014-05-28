@@ -20,7 +20,7 @@
         "sensio/generator-bundle": "2.3.*",
         "incenteev/composer-parameter-handler": "~2.0",
 
-        "fpn/doctrine-extensions-taggable": "dev-master",
+        "fpn/doctrine-extensions-taggable": "0.9.0",
         "fpn/tag-bundle": "dev-master",
 
         "knplabs/knp-markdown-bundle": "1.2.*@dev",
